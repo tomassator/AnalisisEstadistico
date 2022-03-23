@@ -1,0 +1,22 @@
+{% extends "estructura.html" %}
+{% load static %}
+
+{% block title %} Prueba {% endblock %}
+
+{%block css%}<link type="text/css" href="{% static 'css/numerosAleatorios.css' %}" rel="stylesheet" />{% endblock%}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row bg-danger">
+            <h1> NUMEROS GENERADOS</h1>
+        </div>
+        <div class="row">
+            <ul class="list-group">
+                {% for numeros in numerosAleatorios %}
+                <li class="list-group-item">{{numeros}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

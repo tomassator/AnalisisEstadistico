@@ -1,0 +1,37 @@
+{% extends "estructura.html" %}
+{% load static %}
+
+{% block title %} Inicio {% endblock %}
+
+{%block css%}<link type="text/css" href="{% static 'css/inicio.css' %}" rel="stylesheet" />{% endblock%}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h1 class="text-center bg-warning mb-5"> TP SIMULACION NUMEROS ALEATORIOS</h1>
+    </div>
+    <div class="row">
+        <div class="col">
+            <form action="/numerosAleatorios/" method="GET">
+                <div class="mb-3">
+                    <label for="valorSemilla" class="form-label">Ingrese el valor de la semilla</label>
+                    <input type="number" class="form-control" id="valorSemilla" name="valorSemilla">
+                </div>
+                <div class="mb-3">
+                    <label for="valorK" class="form-label">Ingrese el valor de K</label>
+                    <input type="number" class="form-control" id="valorK" name="valorK">
+                </div>
+                <div class="mb-3">
+                    <label for="valorG" class="form-label">Ingrese el valor de G</label>
+                    <input type="number" class="form-control" id="valorG" name="valorG">
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-info" type="submit" value="Datos"> Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

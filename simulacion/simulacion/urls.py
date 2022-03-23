@@ -19,5 +19,6 @@ from numerosaleatorios import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('holamundo/', views.holamundo),
+    path('numerosAleatorios/', views.numerosAleatorios),
+    path('inicio/', views.inicio),
 ]
