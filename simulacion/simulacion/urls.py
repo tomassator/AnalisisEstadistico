@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from numerosaleatorios import views
+from numerosaleatorios.views import numerosAleatorios, cargaparametros
+from menu.views import opciones
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('numerosAleatorios/', views.numerosAleatorios),
-    path('inicio/', views.inicio),
+    path('', opciones),
+    path('numerosAleatorios/', numerosAleatorios),
+    path('cargaparametros/', cargaparametros),
 ]

@@ -1,0 +1,25 @@
+{% extends "estructuramenu.html" %}
+{% load static %}
+
+{% block title %} Menu {% endblock %}
+
+{%block css%}<link type="text/css" href="{% static 'css/opciones.css' %}" rel="stylesheet" />{% endblock%}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h1 class="text-center bg-warning mb-5"> Trabajos Practicos Simulacion</h1>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="d-grid gap-2">
+              <a href="/cargaparametros" class="btn" role="button" >Generador de numeros aleatorios</a>
+              <a href="#" class="btn" role="button">Prueba de Chi cuadrado</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

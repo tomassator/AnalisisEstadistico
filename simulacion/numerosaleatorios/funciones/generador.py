@@ -1,4 +1,4 @@
-
+from numerosaleatorios.funciones import numeroRandom
 
 class Generador():
     semilla = None
@@ -7,6 +7,7 @@ class Generador():
     c = 7
     a = None
     m = None
+    tamanomuestra = None
     xi_siguiente = None
 
     def setK(self, k):
@@ -26,6 +27,8 @@ class Generador():
     def setXi_siguiente(self, xi_siguiente):
         self.xi_siguiente = xi_siguiente
 
+    def setTamañoMuestra(self, tamanomuestra):
+        self.tamanomuestra = tamanomuestra
 
     def calcularA(self):
         self.a = 1 + 4 * self.k
@@ -37,14 +40,15 @@ class Generador():
 
     def calcularRandom(self):
         lista_numerosAleatorios = []
-        for i in range(0,8):
+        for i in range(0, int(self.tamanomuestra)):
             valor = (self.a*self.xi_siguiente) + self.c
 
             self.xi_siguiente = valor % self.m
 
-            numeroRandom = self.xi_siguiente/ (self.m - 1)
+            numeroGenerado = self.xi_siguiente/ (self.m - 1)
 
-            lista_numerosAleatorios.append(numeroRandom)
+            numeroR = numeroRandom.NumeroR(i, self.xi_siguiente, numeroGenerado)
+            lista_numerosAleatorios.append(numeroR)
 
         return lista_numerosAleatorios
 

@@ -1,14 +1,15 @@
 from django.shortcuts import render, HttpResponse
-from numerosaleatorios.funciones import generador
+from numerosaleatorios.funciones import generador, intervalos
 
 
 # Create your views here.
 
 generador = generador.Generador()
+generadorIntervalos = intervalos.GeneradorIntervalos()
 
 
-def inicio(request):
-    return render(request, "inicio.html")
+def cargaparametros(request):
+    return render(request, "cargaparametros.html")
 
 
 def numerosAleatorios(request):
@@ -16,11 +17,14 @@ def numerosAleatorios(request):
         valorSemilla = request.GET["valorSemilla"]
         valorG = request.GET["valorG"]
         valorK = request.GET["valorK"]
+        tamanoMuestra = request.GET["tamañoMuestra"]
 
         generador.setSemilla(valorSemilla)
         generador.setG(valorG)
         generador.setK(valorK)
+        generador.setTamañoMuestra(tamanoMuestra)
         generador.calcularA()
         generador.calcularM()
         numerosAleatorios = generador.calcularRandom()
-        return render(request, "numerosaleatorios.html", {"numerosAleatorios": numerosAleatorios})
+        intervalo = generadorIntervalos.intervalocinco(numerosAleatorios)
+        return render(request, "numerosaleatorios.html", {"numerosAleatorios": numerosAleatorios, "intervalo": intervalo})

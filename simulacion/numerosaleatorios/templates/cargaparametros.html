@@ -1,9 +1,9 @@
 {% extends "estructura.html" %}
 {% load static %}
 
-{% block title %} Inicio {% endblock %}
+{% block title %} Carga de parametros {% endblock %}
 
-{%block css%}<link type="text/css" href="{% static 'css/inicio.css' %}" rel="stylesheet" />{% endblock%}
+{%block css%}<link type="text/css" href="{% static 'css/cargaparametros.css' %}" rel="stylesheet" />{% endblock%}
 
 {% block content %}
 <div class="container">
@@ -13,6 +13,10 @@
     <div class="row">
         <div class="col">
             <form action="/numerosAleatorios/" method="GET">
+                <div class="mb-3">
+                    <label for="tamañoMuestra" class="form-label">Ingrese el tamaño de la muestra</label>
+                    <input type="number" class="form-control" id="tamañoMuestra" name="tamañoMuestra">
+                </div>
                 <div class="mb-3">
                     <label for="valorSemilla" class="form-label">Ingrese el valor de la semilla</label>
                     <input type="number" class="form-control" id="valorSemilla" name="valorSemilla">
@@ -32,6 +36,7 @@
         </div>
     </div>
 </div>
+
 
 
 {% endblock %}
