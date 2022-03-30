@@ -10,12 +10,13 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script> {% endblock %}
 {%block css%}<link type="text/css" href="{% static 'css/numerosAleatorios.css' %}" rel="stylesheet" />{% endblock%}
+{%block js%}<script type="text/javascript" src="{% static 'js/numerosAleatorios.js' %}"></script>{% endblock%}
 
 {% block content %}
 
     <div class="container">
         <div class="row bg-danger">
-            <h1> NUMEROS GENERADOS</h1>
+            <h1 class="text-center"> NUMEROS GENERADOS</h1>
         </div>
         <div class="row">
             <div class="col">
@@ -46,9 +47,6 @@
 
 
 
-
-
-
     <div class="container-fluid">
         <div class="row">
             <div class="col">
@@ -66,7 +64,7 @@
         type: 'column'
     },
     title: {
-        text: 'Grafico de prueba'
+        text: 'Histograma'
     },
 
     accessibility: {
@@ -106,31 +104,13 @@
             name: "intervalos",
             colorByPoint: true,
             data: [
+                {% for int in histograma.intervalos%}
                 {
-                    name: "0 - 0.2",
-                    y: {{intervalo.0}},
+                    name: "{{int.0}} - {{int.1}}",
+                    y: {{int.2}},
 
                 },
-                {
-                    name: "0.21 - 0.4",
-                    y: {{intervalo.1}},
-
-                },
-                {
-                    name: "0.41 - 0.6",
-                    y: {{intervalo.2}},
-
-                },
-                {
-                    name: "0.61 - 0.8",
-                    y: {{intervalo.3}},
-
-                },
-                {
-                    name: "0.81 -1",
-                    y: {{intervalo.4}},
-
-                },
+                {% endfor %}
             ]
         }
     ],

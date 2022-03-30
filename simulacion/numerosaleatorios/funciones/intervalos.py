@@ -1,24 +1,24 @@
 
 class GeneradorIntervalos():
 
-    intervalo = []
+    intervalos = []
+    frecuencias = []
 
+    def determinarIntervalo(self, numintervalo, numerosAleatorios):
+        self.frecuencias =[]
+        self.intervalos = []
+        self.frecuencias.extend([0] * int(numintervalo))
 
-    def intervalocinco(self, numerosAleatorios):
-        self.intervalo= []
+        li = 0
+        ls = 1 / int(numintervalo)
 
-        self.intervalo.extend([0,0,0,0,0])
-
-        for num in numerosAleatorios:
-            if float(num.valor) <= 0.2:
-                self.intervalo[0] += 1
-            elif float(num.valor) <= 0.4:
-                self.intervalo[1] += 1
-            elif float(num.valor) <= 0.6:
-                self.intervalo[2] += 1
-            elif float(num.valor) <= 0.8:
-                self.intervalo[3] += 1
-            elif float(num.valor) <= 1:
-                self.intervalo[4] += 1
-
-        return self.intervalo
+        for i in range(0, int(numintervalo)):
+            if i != 0:
+                aux = ls
+                li = ls
+                ls = aux + (1 / int(numintervalo))
+            for num in numerosAleatorios:
+                if num.valor >= li and num.valor <= ls:
+                    self.frecuencias[i] += 1
+            self.intervalos.append((round(li,2), round(ls,2), self.frecuencias[i]))
+        return self.intervalos

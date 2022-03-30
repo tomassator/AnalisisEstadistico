@@ -18,13 +18,17 @@ def numerosAleatorios(request):
         valorG = request.GET["valorG"]
         valorK = request.GET["valorK"]
         tamanoMuestra = request.GET["tamañoMuestra"]
+        numintervalos = request.GET["valorIntervalos"]
+
 
         generador.setSemilla(valorSemilla)
         generador.setG(valorG)
         generador.setK(valorK)
-        generador.setTamañoMuestra(tamanoMuestra)
+        generador.setTamanoMuestra(tamanoMuestra)
         generador.calcularA()
         generador.calcularM()
         numerosAleatorios = generador.calcularRandom()
-        intervalo = generadorIntervalos.intervalocinco(numerosAleatorios)
-        return render(request, "numerosaleatorios.html", {"numerosAleatorios": numerosAleatorios, "intervalo": intervalo})
+        generadorIntervalos.determinarIntervalo(numintervalos , numerosAleatorios)
+        print(generadorIntervalos.frecuencias)
+
+        return render(request, "numerosaleatorios.html", {"numerosAleatorios": numerosAleatorios, "histograma":generadorIntervalos})

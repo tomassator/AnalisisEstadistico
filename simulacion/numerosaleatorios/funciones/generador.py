@@ -11,23 +11,23 @@ class Generador():
     xi_siguiente = None
 
     def setK(self, k):
-        self.k = int(k)
+        self.k = float(k)
 
 
     def setG(self, g):
-        self.g = int(g)
+        self.g = float(g)
 
     def getSemilla(self):
         return self.semilla
 
     def setSemilla(self, semilla):
-        self.semilla = int(semilla)
+        self.semilla = float(semilla)
         self.setXi_siguiente(self.semilla)
 
     def setXi_siguiente(self, xi_siguiente):
         self.xi_siguiente = xi_siguiente
 
-    def setTamañoMuestra(self, tamanomuestra):
+    def setTamanoMuestra(self, tamanomuestra):
         self.tamanomuestra = tamanomuestra
 
     def calcularA(self):
