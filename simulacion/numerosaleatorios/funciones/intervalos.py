@@ -18,9 +18,9 @@ class GeneradorIntervalos():
                 aux = ls
                 li = ls
                 ls = aux + (1 / int(numintervalo))
-
             for num in numerosAleatorios:
-                if num.valor >= li and num.valor <= ls:
+                print(num.valor)
+                if num.valor >= li and num.valor < ls:
                     self.frecuencias[i] += 1
 
             frecuencia_acumulada += self.frecuencias[i]
