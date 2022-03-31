@@ -17,6 +17,7 @@ def numerosAleatorios(request):
         valorSemilla = request.GET["valorSemilla"]
         valorG = request.GET["valorG"]
         valorK = request.GET["valorK"]
+        valorC = request.GET["valorC"]
         tamanoMuestra = request.GET["tamañoMuestra"]
         numintervalos = request.GET["valorIntervalos"]
 
@@ -24,6 +25,7 @@ def numerosAleatorios(request):
         generador.setSemilla(valorSemilla)
         generador.setG(valorG)
         generador.setK(valorK)
+        generador.setC(valorC)
         generador.setTamanoMuestra(tamanoMuestra)
         generador.calcularA()
         generador.calcularM()

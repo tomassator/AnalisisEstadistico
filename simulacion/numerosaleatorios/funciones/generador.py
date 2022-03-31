@@ -4,7 +4,7 @@ class Generador():
     semilla = None
     k = None
     g = None
-    c = 7
+    c = None
     a = None
     m = None
     tamanomuestra = None
@@ -13,6 +13,8 @@ class Generador():
     def setK(self, k):
         self.k = float(k)
 
+    def setC(self, c):
+        self.c = float(c)
 
     def setG(self, g):
         self.g = float(g)
@@ -33,7 +35,6 @@ class Generador():
     def calcularA(self):
         self.a = 1 + 4 * self.k
 
-
     def calcularM(self):
         self.m = 2 ** self.g
 
@@ -45,7 +46,7 @@ class Generador():
 
             self.xi_siguiente = valor % self.m
 
-            numeroGenerado = self.xi_siguiente/ (self.m - 1)
+            numeroGenerado = self.xi_siguiente/ (self.m)
 
             numeroR = numeroRandom.NumeroR(i, self.xi_siguiente, numeroGenerado)
             lista_numerosAleatorios.append(numeroR)
