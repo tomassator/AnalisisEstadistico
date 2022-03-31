@@ -30,7 +30,7 @@ def prueba():
 
 d,e = prueba()
 
-print(d, e)'''
+print(d, e)
 
 class A:
     a = [(0,1,3),(1,2,4),(2,3,5)]
@@ -38,4 +38,11 @@ class A:
 
 b = A
 
-print(b.a[0][2])
+print(b.a[0][2])'''
+
+
+a = [1,2,3,4]
+
+b = [1,2,3,4]
+
+for i in b

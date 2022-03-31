@@ -28,7 +28,6 @@ def numerosAleatorios(request):
         generador.calcularA()
         generador.calcularM()
         numerosAleatorios = generador.calcularRandom()
-        generadorIntervalos.determinarIntervalo(numintervalos , numerosAleatorios)
-        print(generadorIntervalos.frecuencias)
+        generadorIntervalos.determinarIntervalo(numintervalos , numerosAleatorios, tamanoMuestra)
 
         return render(request, "numerosaleatorios.html", {"numerosAleatorios": numerosAleatorios, "histograma":generadorIntervalos})

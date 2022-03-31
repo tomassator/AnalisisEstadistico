@@ -40,7 +40,7 @@
                       </tbody>
                          {% endfor %}
                     </table>
-            </div>
+                </div>
 
         </div>
     </div>
@@ -54,7 +54,37 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Intervalo</th>
+                      <th scope="col">Marca de Clase</th>
+                      <th scope="col">Frecuencia</th>
+                      <th scope="col">Frecuencia Relativa</th>
+                      <th scope="col">Frecuencia Acumulada</th>
+                      <th scope="col">Frecuencia Relativa Acumulada</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for fila in histograma.intervalos %}
+                    <tr>
+                      <th scope="row">{{fila.0}} - {{fila.1}}</th>
+                      <td>{{fila.2}}</td>
+                      <td>{{fila.3}}</td>
+                      <td>{{fila.4}}</td>
+                      <td>{{fila.5}}</td>
+                      <td>{{fila.6}}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+        </div>
     </div>
+
+
 
 
 <script type="application/javascript">
@@ -107,7 +137,7 @@
                 {% for int in histograma.intervalos%}
                 {
                     name: "{{int.0}} - {{int.1}}",
-                    y: {{int.2}},
+                    y: {{int.3}},
 
                 },
                 {% endfor %}
