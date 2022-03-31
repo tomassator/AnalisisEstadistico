@@ -1,0 +1,25 @@
+{% extends "estructurachicuadrado.html" %}
+{% load static %}
+
+{% block title %} Menu {% endblock %}
+
+{%block css%}<link type="text/css" href="{% static 'css/pruebachicuadrado.css' %}" rel="stylesheet" />{% endblock%}
+
+{% block content %}
+<div class="container text-center">
+    <div class="row bg-dark mb-5">
+        <div class="col">
+            <h1 class="text-white"> PRUEBA DE BONDAD</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a href="/pruebaChicuadrado/" type="button" class="btn btn-outline-primary">Prueba de Chi cuadrado</a>
+            <a href="#" type="button" class="btn btn-outline-primary">Prueba de KS</a>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
