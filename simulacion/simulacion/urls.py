@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from chicuadrado.views import opcionesBondades, pruebaChicuadrado
+from chicuadrado.views import opcionesBondades, pruebaChicuadrado, pruebaKS
 from numerosaleatorios.views import numerosAleatorios, cargaparametros
 from menu.views import opciones
 
@@ -26,4 +26,5 @@ urlpatterns = [
     path('cargaparametros/', cargaparametros),
     path('pruebaBondades/', opcionesBondades),
     path('pruebaChicuadrado/', pruebaChicuadrado),
+    path('pruebaKS/', pruebaKS),
 ]

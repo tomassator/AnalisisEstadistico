@@ -15,7 +15,6 @@ class tablaChicuadrado():
         return (((fo-self.frecuencia_esperada)**2)/self.frecuencia_esperada)
 
     def calcularFrecuenciaEsperada(self ):
-        print(self.tamanoMuestra, self.calcularCantidadIntervalos())
         self.frecuencia_esperada = (int(self.tamanoMuestra) / self.calcularCantidadIntervalos())
 
 
@@ -27,8 +26,6 @@ class tablaChicuadrado():
         c_acumulado = 0
         for datosH in self.datosHistograma:
             c_acumulado += self.calcularC(datosH[3])
-            print(datosH)
-            print(datosH[0] , " - ", datosH[1])
             self.datosTab.append((datosH[0],datosH[1], datosH[3], round(self.frecuencia_esperada,4), round(self.calcularC(datosH[3]),4), c_acumulado))
 
 

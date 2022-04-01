@@ -1,6 +1,5 @@
-from numerosaleatorios import views
-
-print(views.a)
+a = -2
+print(abs(a))
 '''for i in range(0,5):
     print(i)
 
