@@ -26,6 +26,6 @@ class tablaChicuadrado():
         c_acumulado = 0
         for datosH in self.datosHistograma:
             c_acumulado += self.calcularC(datosH[3])
-            self.datosTab.append((datosH[0],datosH[1], datosH[3], round(self.frecuencia_esperada,4), round(self.calcularC(datosH[3]),4), round(c_acumulado)))
+            self.datosTab.append((datosH[0],datosH[1], datosH[3], round(self.frecuencia_esperada,4), round(self.calcularC(datosH[3]),4), round(c_acumulado,4)))
 
 

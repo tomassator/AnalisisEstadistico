@@ -12,6 +12,15 @@
     </div>
     <div class="row">
         <div class="col">
+            <h1 class="text-center mb-5 titulo">Generador Lineal Congruente</h1>
+        </div>
+        <div class="col">
+            <h1 class="text-center mb-5 titulo">Generador del lenguaje</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
             <form action="/numerosAleatorios/" method="GET">
                 <div class="mb-3">
                     <label for="tamañoMuestra" class="form-label">Ingrese el tamaño de la muestra</label>
@@ -44,8 +53,31 @@
                     </select>
                 </div>
 
+                <div class="mb-3 d-flex justify-content-center">
+                    <button class="btn btn-info mb-3" type="submit" value="Datos"> Generar</button>
+                </div>
+            </form>
+
+        </div>
+        <div class="col">
+            <form action="/numerosAleatorios/" method="POST">
+                {% csrf_token %}
+                 <div class="mb-3">
+                    <label for="tamañoMuestraGL" class="form-label">Ingrese el tamaño de la muestra</label>
+                    <input type="number" class="form-control" id="tamañoMuestraGL" name="tamañoMuestraGL">
+                </div>
                 <div class="mb-3">
-                    <button class="btn btn-info" type="submit" value="Datos"> Enviar</button>
+                    <label for="valorIntervalosGL" class="form-label">Ingrese la cantidad de intervalos</label>
+                    <select class="form-select" aria-label="Default select example" id="valorIntervalosGL" name="valorIntervalosGL">
+                        <option hidden selected>Intervalos</option>
+                        <option value="5">5 Intervalos</option>
+                        <option value="8">8 Intervalos</option>
+                        <option value="10">10 Intervalos</option>
+                        <option value="12">12 Intervalos</option>
+                    </select>
+                </div>
+                <div class="mb-3 d-flex justify-content-center">
+                 <button class="btn btn-info me-5" type="submit" value="Datos" id="btnGenerador">Usar generador del lenguaje</button>
                 </div>
             </form>
         </div>

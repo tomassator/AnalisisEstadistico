@@ -32,5 +32,18 @@ def numerosAleatorios(request):
         generador.calcularM()
         numerosAleatorios = generador.calcularRandom()
         generadorIntervalos.determinarIntervalo(numintervalos , numerosAleatorios, tamanoMuestra)
+        return render(request, "numerosaleatorios.html",
+                      {"numerosAleatorios": numerosAleatorios, "histograma": generadorIntervalos})
 
+    if request.method == "POST":
+        tamanoMuestra = request.POST["tamañoMuestraGL"]
+        numintervalos = request.POST["valorIntervalosGL"]
+        generador.setTamanoMuestra(tamanoMuestra)
+        numerosAleatorios = generador.calcularRandomGeneradorLenguaje()
+
+
+        generadorIntervalos.determinarIntervalo(numintervalos,numerosAleatorios, tamanoMuestra )
         return render(request, "numerosaleatorios.html", {"numerosAleatorios": numerosAleatorios, "histograma":generadorIntervalos})
+
+
+
