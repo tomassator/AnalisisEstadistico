@@ -27,8 +27,6 @@ class tablaks():
         for datosKS in self.datosHistograma:
             probac_fo += (datosKS[3]/int(self.tamanoMuestra))
             probac_fe += (self.frecuencia_esperada/int(self.tamanoMuestra))
-
-            print(abs(probac_fo-probac_fe), max_c)
             if abs(probac_fo-probac_fe) > max_c:
                 max_c = abs(probac_fo-probac_fe)
 

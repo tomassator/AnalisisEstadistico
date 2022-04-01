@@ -20,7 +20,6 @@ def opcionesBondades(request):
 
 def pruebaChicuadrado(request):
     if request.method == "GET":
-        print("AAAAAAAAA", generador.tamanomuestra)
         tablaChicuadrado.setTamanoMuestra(generador.tamanomuestra)
         tablaChicuadrado.setDatosHistograma(valoresHistograma.intervalos)
         tablaChicuadrado.calcularFrecuenciaEsperada()
