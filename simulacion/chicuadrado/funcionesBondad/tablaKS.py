@@ -32,5 +32,5 @@ class tablaks():
             if abs(probac_fo-probac_fe) > max_c:
                 max_c = abs(probac_fo-probac_fe)
 
-            self.datosTab.append((datosKS[0], datosKS[1], datosKS[3], round(self.frecuencia_esperada,4), (datosKS[3]/int(self.tamanoMuestra)),
-                                  (self.frecuencia_esperada/int(self.tamanoMuestra)), round(probac_fo,4), round(probac_fe,4), abs(round(probac_fo-probac_fe,4)), round(max_c,4)))
+            self.datosTab.append((datosKS[0], datosKS[1], datosKS[3], round(self.frecuencia_esperada,4), round((datosKS[3]/int(self.tamanoMuestra)),4),
+                                  round(self.frecuencia_esperada/int(self.tamanoMuestra),4), round(probac_fo,4), round(probac_fe,4), abs(round(probac_fo-probac_fe,4)), round(max_c,4)))
