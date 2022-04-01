@@ -19,7 +19,6 @@ class GeneradorIntervalos():
                 li = ls
                 ls = aux + (1 / int(numintervalo))
             for num in numerosAleatorios:
-                print(num.valor)
                 if num.valor >= li and num.valor < ls:
                     self.frecuencias[i] += 1
 
@@ -28,6 +27,6 @@ class GeneradorIntervalos():
 
 
             #print(self.frecuencias[i] + fac_anterior)
-            self.intervalos.append((round(li,2), round(ls,2), round((li+ls)/2 , 4) , self.frecuencias[i], self.frecuencias[i]/int(tamanomuestra),
+            self.intervalos.append((round(li,2), round(ls,2), round((li+ls)/2 , 4) , self.frecuencias[i], round(self.frecuencias[i]/int(tamanomuestra),4),
                                     frecuencia_acumulada, round(frecuencia_relativa_ac, 4)))
         return self.intervalos

@@ -2,8 +2,9 @@ from django.shortcuts import render, HttpResponse
 from numerosaleatorios.funciones import generador, intervalos
 
 
-# Create your views here.
 
+# Create your views here.
+a = 1
 generador = generador.Generador()
 generadorIntervalos = intervalos.GeneradorIntervalos()
 
