@@ -24,9 +24,10 @@ def pruebaChicuadrado(request):
         tablaChicuadrado.setDatosHistograma(valoresHistograma.intervalos)
         tablaChicuadrado.calcularFrecuenciaEsperada()
         tablaChicuadrado.datosTabla()
+        resultado = tablaChicuadrado.pruebaBondad()
 
 
-    return render(request, 'pruebaChicuadrado.html', {"datos":tablaChicuadrado})
+    return render(request, 'pruebaChicuadrado.html', {"datos":tablaChicuadrado, "resultado":resultado})
 
 
 def pruebaKS(request):
