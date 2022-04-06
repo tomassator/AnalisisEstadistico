@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'numerosaleatorios',
     'menu',
     'chicuadrado',
+    'TP2',
 
 ]
 

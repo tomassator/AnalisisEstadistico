@@ -6,3 +6,8 @@ from django.shortcuts import render, HttpResponse
 def opciones(request):
 
     return render(request, 'opciones.html')
+
+
+def seleccionarMuestra(request):
+
+    return render(request, 'seleccionarMuestra.html')

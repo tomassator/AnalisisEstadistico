@@ -1,7 +1,7 @@
 {% extends "estructuramenu.html" %}
 {% load static %}
 
-{% block title %} Menu {% endblock %}
+{% block title %} Opciones {% endblock %}
 
 {%block css%}<link type="text/css" href="{% static 'css/opciones.css' %}" rel="stylesheet" />{% endblock%}
 
@@ -14,6 +14,11 @@
         <div class="col">
             <div class="d-grid gap-2">
               <a href="/cargaparametros" class="btn border" role="button" >TP1 - Generador de numeros aleatorios</a>
+            </div>
+        </div>
+        <div class="col">
+            <div class="d-grid gap-2">
+              <a href="/seleccionarMuestra" class="btn border" role="button" >TP2 - Toma de Datos</a>
             </div>
         </div>
     </div>
