@@ -9,13 +9,13 @@ from chicuadrado.funcionesBondad import tablaChi, tablaKS
 datos_histograma = histograma.Histograma()
 datos_tablaChi = tablaChi.tablaChicuadrado()
 datos_tablaKS = tablaKS.tablaks()
-datos_muestra = datosBitcoin.stats_bitcoin()
-#datos_muestra = datosNbaEspn.stats_ginobili()
+datos_muestra = None
 
 
 
 def muestra1(request):
-
+    global datos_muestra
+    datos_muestra = datosNbaEspn.stats_ginobili()
     datos_histograma.determinarIntervalo(20, datos_muestra, len(datos_muestra))
 
 
@@ -68,12 +68,11 @@ def pruebaKSTP2(request):
 '''
 
 def muestra2(request):
+    global datos_muestra
+    datos_muestra = datosBitcoin.stats_bitcoin()
     datos = [datos_muestra[i][1] for i in range(len(datos_muestra))]
 
     datos_histograma.determinarIntervaloM2(10, datos, len(datos))
-
-
-
 
 
 

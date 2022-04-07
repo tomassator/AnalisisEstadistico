@@ -1,17 +1,11 @@
+
 import math
-
-a = [("a",2),("b",3)]
-
-b = a.pop()
-
-print(b[0])
-
-a = 2
-
-a += -1
-
-print(a)
-
+b = 0
+def a():
+    b = 1
+    return b
+a()
+print(a())
 
 
 
