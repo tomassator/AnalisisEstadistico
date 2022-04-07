@@ -17,17 +17,26 @@ class tablaChicuadrado():
     #METODOS QUE SE HICIERON PARA LA TABLA DE DISTRIBUCION NORMAL
     def calcularMedia(self):
         valores_acum = 0
-        for valor in self.datosMuestra:
-            valores_acum +=  valor[4]/valor[3]
+        try:
+            for valor in self.datosMuestra:
+                valores_acum +=  valor[4]/valor[3]
+        except:
+            for valor in self.datosMuestra:
+                valores_acum += valor[1]
         self.media = valores_acum / self.tamanoMuestra
 
 
     def calcularVarianza(self):
         sumatoria_cuadrada = 0
 
-        for valor in self.datosMuestra:
-            p_m = valor[4]/valor[3]
-            sumatoria_cuadrada += (p_m - self.media)**2
+        try:
+            for valor in self.datosMuestra:
+                p_m = valor[4]/valor[3]
+                sumatoria_cuadrada += (p_m - self.media)**2
+        except:
+            for valor in self.datosMuestra:
+                p_m = valor[1]
+                sumatoria_cuadrada += (p_m - self.media)**2
         self.varianza = (1/(self.tamanoMuestra-1)) * sumatoria_cuadrada
 
     def calcularDesviacion(self):
@@ -56,31 +65,62 @@ class tablaChicuadrado():
         fe_acum = 0
         fo_acum = 0
         li_ultimo = None
-        ls_ultimo = None
+        ls_ultimo = self.datosTab[len(self.datosTab)-1][1]
         bandera = False
 
         for datosTab1 in self.datosTab:
             fe = datosTab1[5]
             fo = datosTab1[3]
+            fe_acum += fe
+            fo_acum += fo
 
-            if fe > 10:
+            print(fe_acum)
+            if (fe > 5) and (bandera == False):
                 li = datosTab1[0]
                 ls = datosTab1[1]
                 c = self.calcularC(fo, fe)
                 self.c_acumulado += c
                 self.datosTab2.append((li, ls, fo, fe, c , self.c_acumulado))
+                fe_acum = 0
+                fo_acum = 0
+
+            elif fe_acum > 5:
+                ls = datosTab1[1]
+                print("hola")
+                bandera = False
+                self.c_acumulado += self.calcularC(fo_acum, fe_acum)
+                self.datosTab2.append(
+                    (li_ultimo, ls, fo_acum, fe_acum, self.calcularC(fo_acum, fe_acum), self.c_acumulado))
+                fe_acum = 0
+                fo_acum = 0
+
+            elif bandera == False:
+                bandera = True
+                li_ultimo = datosTab1[0]
+
+        if bandera == True:
+            if fe_acum < 5:
+                intervalo_anterior = self.datosTab2.pop()
+                li_ultimo = intervalo_anterior[0]
+                fo_acum_anterior = intervalo_anterior[2]
+                fe_acum_anterior = intervalo_anterior[3]
+                c_anterior = self.calcularC(fo_acum_anterior, fe_acum_anterior)
+
+                fo_acum += fo_acum_anterior
+                fe_acum += fe_acum_anterior
+                self.c_acumulado += (self.calcularC(fo_acum, fe_acum)- c_anterior)
+
+                self.datosTab2.append(
+                    (li_ultimo, ls_ultimo, fo_acum, fe_acum, self.calcularC(fo_acum, fe_acum), self.c_acumulado))
             else:
-                fe_acum += fe
-                fo_acum += fo
-                if bandera == False:
-                    bandera = True
-                    li_ultimo = datosTab1[0]
-                    print("aaaaaaaa")
+                ls = ls_ultimo
+                self.c_acumulado += self.calcularC(fo_acum, fe_acum)
+                self.datosTab2.append(
+                (li_ultimo, ls, fo_acum, fe_acum, self.calcularC(fo_acum, fe_acum), self.c_acumulado))
 
-                ls_ultimo = datosTab1[1]
 
-        self.c_acumulado += self.calcularC(fo_acum, fe_acum)
-        self.datosTab2.append((li_ultimo, ls_ultimo, fo_acum, fe_acum, self.calcularC(fo_acum,fe_acum), self.c_acumulado))
+
+
 
     def resultadoPruebaChiNormal(self):
         self.grados_libertad = len(self.datosTab2) - 1 - 2
@@ -90,7 +130,11 @@ class tablaChicuadrado():
                 return "NO SE RECHAZA LA HIPOTESIS", 16.9, self.grados_libertad
             else:
                 return "SE RECHAZA LA HIPOTESIS", 16.9, self.grados_libertad
-
+        if self.grados_libertad == 3:
+            if self.c_acumulado <= 7.81:
+                return "NO SE RECHAZA LA HIPOTESIS", 7.81, self.grados_libertad
+            else:
+                return "SE RECHAZA LA HIPOTESIS", 7.81, self.grados_libertad
 
 
 

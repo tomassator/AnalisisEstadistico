@@ -1,15 +1,18 @@
 import math
 
-a= [10,9,7,4,0.1,0.2,0.3]
+a = [("a",2),("b",3)]
 
-iteracion = 0
+b = a.pop()
 
-for i in range(len(a)):
-    if sum(a[i:len(a)]) > 10:
-        print("PASAMO")
-    else:
-        print(sum(a[i:len(a)]))
-        break
+print(b[0])
+
+a = 2
+
+a += -1
+
+print(a)
+
+
 
 
 #a = -2
