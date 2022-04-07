@@ -11,8 +11,12 @@ class tablaks():
     #METODOS PARA LA DISTRIBUCION NORMAL
     def calcularMedia(self):
         valores_acum = 0
-        for valor in self.datosMuestra:
-            valores_acum +=  valor[4]/valor[3]
+        try:
+            for valor in self.datosMuestra:
+                valores_acum += valor[4] / valor[3]
+        except:
+            for valor in self.datosMuestra:
+                valores_acum += valor[1]
         self.media = valores_acum / self.tamanoMuestra
 
     def setDatosMuestra(self, datos):
@@ -21,10 +25,15 @@ class tablaks():
     def calcularVarianza(self):
         sumatoria_cuadrada = 0
 
-        for valor in self.datosMuestra:
-            p_m = valor[4]/valor[3]
-            sumatoria_cuadrada += (p_m - self.media)**2
-        self.varianza = (1/(self.tamanoMuestra-1)) * sumatoria_cuadrada
+        try:
+            for valor in self.datosMuestra:
+                p_m = valor[4] / valor[3]
+                sumatoria_cuadrada += (p_m - self.media) ** 2
+        except:
+            for valor in self.datosMuestra:
+                p_m = valor[1]
+                sumatoria_cuadrada += (p_m - self.media) ** 2
+        self.varianza = (1 / (self.tamanoMuestra - 1)) * sumatoria_cuadrada
 
     def calcularDesviacion(self):
         self.calcularVarianza()
