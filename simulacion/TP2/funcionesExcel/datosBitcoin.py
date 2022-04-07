@@ -1,13 +1,17 @@
+import math
 from openpyxl import load_workbook
 
-def stats_bitcoin():
+def stats_bitcoin(): 
+    ''' retorna las fechas y porcentajes del 2021, formato tupla(fecha(str), porc(float))
+    '''
 
     #los datos obtenidos son el porcentaje de variacion diaria del Bitcoin 
     # desde 01/01/2021 hasta 01/01/2022
     
     #arreglo de datos de bitcoin
+    datos = []
+
     #formato: fecha, porcentaje de variacion
-    stats_bit = []
     excel = load_workbook(filename= r"E:\matia\Documents\Facultad\SIM\TPs\TP2\simulacion\TP2\STATS_BIT.xlsx")
 
     #selecciona la unica hoja del excel
@@ -17,7 +21,6 @@ def stats_bitcoin():
 
     #flag para omitir la cabecera de los datos
     es_cabecera = True
-    datos = []
 
     #recupera los strings con los datos, todavia sin separar
     for i in range(len(fechas)):
@@ -34,4 +37,4 @@ def stats_bitcoin():
     return datos
 
 if __name__ == "__main__":
-    print(stats_bitcoin())
+    print(stats_bitcoin)

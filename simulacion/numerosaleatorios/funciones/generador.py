@@ -1,4 +1,5 @@
-from numerosaleatorios.funciones import numeroRandom
+#from numerosaleatorios.funciones import numeroRandom
+from . import numeroRandom
 import random
 
 class Generador():
@@ -62,6 +63,16 @@ class Generador():
             lista_numerosAleatorios.append(numeroR)
 
         return lista_numerosAleatorios
+
+    def transformarNrosDeEntradaAListaR(listaE):
+        '''Basicamente toma la lista de Entrada, los convierte en NumeroR, y retorna una lista con ellos.
+        Esto sirve para poder rehusar la clase de GeneradorIntervalos, que trabaja con NumeroR'''
+        temp = []
+        for i in range(len(listaE)):
+            temp.append(numeroRandom.NumeroR(i, "N/C", listaE[i]))
+        return temp
+
+
 
 '''   def calcularRandon(self):       # FUNCION DE PRUEBA
         lista_numeroAleatorio = []
