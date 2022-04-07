@@ -18,7 +18,6 @@ class tablaChicuadrado():
     def calcularMedia(self):
         valores_acum = 0
         for valor in self.datosMuestra:
-            print(valor)
             valores_acum +=  valor[4]/valor[3]
         self.media = valores_acum / self.tamanoMuestra
 
@@ -82,6 +81,16 @@ class tablaChicuadrado():
 
         self.c_acumulado += self.calcularC(fo_acum, fe_acum)
         self.datosTab2.append((li_ultimo, ls_ultimo, fo_acum, fe_acum, self.calcularC(fo_acum,fe_acum), self.c_acumulado))
+
+    def resultadoPruebaChiNormal(self):
+        self.grados_libertad = len(self.datosTab2) - 1 - 2
+
+        if self.grados_libertad == 9:
+            if self.c_acumulado <= 16.9:
+                return "NO SE RECHAZA LA HIPOTESIS", 16.9, self.grados_libertad
+            else:
+                return "SE RECHAZA LA HIPOTESIS", 16.9, self.grados_libertad
+
 
 
 

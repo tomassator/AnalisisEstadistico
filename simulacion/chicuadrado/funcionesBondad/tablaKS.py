@@ -1,10 +1,81 @@
-
+import math
 
 class tablaks():
     datosTab = []
+    datosMuestra = []
     datosHistograma = None
     tamanoMuestra = None
     frecuencia_esperada = None
+    max_c = None
+
+    #METODOS PARA LA DISTRIBUCION NORMAL
+    def calcularMedia(self):
+        valores_acum = 0
+        for valor in self.datosMuestra:
+            valores_acum +=  valor[4]/valor[3]
+        self.media = valores_acum / self.tamanoMuestra
+
+    def setDatosMuestra(self, datos):
+        self.datosMuestra = datos
+
+    def calcularVarianza(self):
+        sumatoria_cuadrada = 0
+
+        for valor in self.datosMuestra:
+            p_m = valor[4]/valor[3]
+            sumatoria_cuadrada += (p_m - self.media)**2
+        self.varianza = (1/(self.tamanoMuestra-1)) * sumatoria_cuadrada
+
+    def calcularDesviacion(self):
+        self.calcularVarianza()
+        self.desviacion = math.sqrt(self.varianza)
+
+    def calcularFuncionProbabilidad(self , li , ls, marcaClase):
+        frecuencia_esperada = ((1/(self.desviacion * math.sqrt(2*math.pi))) * math.exp(-0.5*(((marcaClase - self.media)/self.desviacion)**2))) * (ls-li)
+        return frecuencia_esperada
+
+    def datosTablaKSNormal(self):
+        self.datosTab = []
+        prob_esperada_acum = 0
+        prob_observada_acum = 0
+        self.max_c = 0
+        for datosH in self.datosHistograma:
+            li = datosH[0]
+            ls = datosH[1]
+            mc = datosH[2]
+            fo = datosH[3]
+            prob_esperada = self.calcularFuncionProbabilidad(li, ls ,mc)
+            fe = self.tamanoMuestra * prob_esperada
+            prob_observada = fo/ self.tamanoMuestra
+            prob_esperada_acum += prob_esperada
+            prob_observada_acum += prob_observada
+
+            diferencia= abs(prob_observada_acum - prob_esperada_acum)
+
+            if diferencia > self.max_c:
+               self.max_c = diferencia
+
+            self.datosTab.append((li, ls, fo, fe, prob_observada, prob_esperada, prob_observada_acum, prob_esperada_acum, diferencia, self.max_c ))
+
+    def resultadoPruebaKSNormal(self):
+        self.grados_libertad = self.tamanoMuestra
+
+        if self.grados_libertad > 35:
+            if self.max_c <= (1.36/(math.sqrt(self.tamanoMuestra))):
+                return "NO SE RECHAZA LA HIPOTESIS", 1.36/(math.sqrt(self.tamanoMuestra)), self.grados_libertad
+            else:
+                return "SE RECHAZA LA HIPOTESIS", 1.36/(math.sqrt(self.tamanoMuestra)), self.grados_libertad
+
+
+
+
+
+
+
+
+
+
+
 
 
     def setDatosHistograma(self, data):

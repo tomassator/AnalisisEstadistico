@@ -18,7 +18,7 @@ from django.urls import path
 from chicuadrado.views import opcionesBondades, pruebaChicuadrado, pruebaKS
 from numerosaleatorios.views import numerosAleatorios, cargaparametros
 from menu.views import opciones, seleccionarMuestra
-from TP2.views import muestra1, muestra2,pruebaChiTP2
+from TP2.views import muestra1, muestra2,pruebaChiTP2, pruebaKSTP2
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,4 +32,5 @@ urlpatterns = [
     path('muestra1/', muestra1),
     path('muestra2/', muestra2),
     path('pruebaChiTP2/', pruebaChiTP2),
+    path('pruebaKSTP2/', pruebaKSTP2),
 ]
