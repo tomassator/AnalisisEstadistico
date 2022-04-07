@@ -10,7 +10,7 @@ class Histograma():
         self.frecuencias.extend([0] * int(numintervalo))
 
         li = 0
-        ls = 2 / int(numintervalo)
+        ls = 2/ int(numintervalo)
         frecuencia_acumulada = 0
         frecuencia_relativa_ac = 0
         for i in range(0, int(numintervalo)):
@@ -19,7 +19,7 @@ class Histograma():
                 li = ls
                 ls = aux + (2 / int(numintervalo))
             for p_m in datos:
-                if (p_m[3]/p_m[2]) >= li and (p_m[3]/p_m[2]) < ls:
+                if (p_m[4]/p_m[3]) >= li and (p_m[4]/p_m[3]) < ls:
                     self.frecuencias[i] += 1
 
             frecuencia_acumulada += self.frecuencias[i]

@@ -1,5 +1,19 @@
-a = -2
-print(abs(a))
+import math
+
+a= [10,9,7,4,0.1,0.2,0.3]
+
+iteracion = 0
+
+for i in range(len(a)):
+    if sum(a[i:len(a)]) > 10:
+        print("PASAMO")
+    else:
+        print(sum(a[i:len(a)]))
+        break
+
+
+#a = -2
+#print(abs(a))
 '''for i in range(0,5):
     print(i)
 
