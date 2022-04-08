@@ -7,8 +7,11 @@ def stats_ginobili():
     anios = [2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017]  #Coincide con los nombres de las hojas del exel
     #anios = [2002, 2003, 2004]
     #excel = load_workbook(filename= r"E:\\matia\\Documents\\Facultad\\SIM\\TPs\\TP2\simulacion\\TP2\\STATS_MANU.xlsx") #Ruta del exel donde se extraen los datos
+    #excel = load_workbook(
+    #    filename=r"A:\TP SIMULACION\simulacion\TP2\STATS_MANU.xlsx")  # Ruta del exel donde se extraen los datos
+
     excel = load_workbook(
-        filename=r"A:\TP SIMULACION\simulacion\TP2\STATS_MANU.xlsx")  # Ruta del exel donde se extraen los datos
+        filename=r"C:\Users\User\Desktop\Facultad\5to año\SIM\TP1\simulacion\TP2\STATS_MANU.xlsx")  # Ruta del exel donde se extraen los datos
 
     partido=0
 

@@ -64,7 +64,9 @@ class tablaks():
             if diferencia > self.max_c:
                self.max_c = diferencia
 
-            self.datosTab.append((li, ls, fo, fe, prob_observada, prob_esperada, prob_observada_acum, prob_esperada_acum, diferencia, self.max_c ))
+            self.datosTab.append((li, ls, fo, round(fe,4), round(prob_observada,4),
+                                  round(prob_esperada,4), round(prob_observada_acum,4),
+                                  round(prob_esperada_acum,4), round(diferencia,4),round(self.max_c,4) ))
 
     def resultadoPruebaKSNormal(self):
         self.grados_libertad = self.tamanoMuestra

@@ -57,7 +57,7 @@ class tablaChicuadrado():
             fo = datosH[3]
             prob = self.calcularFuncionProbabilidad(datosH[0], datosH[1], datosH[2])
             fe = self.tamanoMuestra * prob
-            self.datosTab.append((li, ls, mc, fo, prob, fe))
+            self.datosTab.append((li, ls, mc, fo, round(prob,4), round(fe,4)))
 
     def datosTablaDNormal2(self):
         self.datosTab2 = []
@@ -80,7 +80,7 @@ class tablaChicuadrado():
                 ls = datosTab1[1]
                 c = self.calcularC(fo, fe)
                 self.c_acumulado += c
-                self.datosTab2.append((li, ls, fo, fe, c , self.c_acumulado))
+                self.datosTab2.append((li, ls, fo, round(fe,4), round(c,4) , round(self.c_acumulado,4)))
                 fe_acum = 0
                 fo_acum = 0
 
@@ -90,7 +90,8 @@ class tablaChicuadrado():
                 bandera = False
                 self.c_acumulado += self.calcularC(fo_acum, fe_acum)
                 self.datosTab2.append(
-                    (li_ultimo, ls, fo_acum, fe_acum, self.calcularC(fo_acum, fe_acum), self.c_acumulado))
+                    (li_ultimo, ls, fo_acum, round(fe_acum,4), round(self.calcularC(fo_acum, fe_acum),4),
+                     round(self.c_acumulado,4)))
                 fe_acum = 0
                 fo_acum = 0
 
@@ -111,12 +112,14 @@ class tablaChicuadrado():
                 self.c_acumulado += (self.calcularC(fo_acum, fe_acum)- c_anterior)
 
                 self.datosTab2.append(
-                    (li_ultimo, ls_ultimo, fo_acum, fe_acum, self.calcularC(fo_acum, fe_acum), self.c_acumulado))
+                    (li_ultimo, ls_ultimo, fo_acum, round(fe_acum,4),
+                     round(self.calcularC(fo_acum, fe_acum),4), round(self.c_acumulado,4)))
             else:
                 ls = ls_ultimo
                 self.c_acumulado += self.calcularC(fo_acum, fe_acum)
                 self.datosTab2.append(
-                (li_ultimo, ls, fo_acum, fe_acum, self.calcularC(fo_acum, fe_acum), self.c_acumulado))
+                (li_ultimo, ls, fo_acum, round(fe_acum,4), round(self.calcularC(fo_acum, fe_acum),4),
+                 round(self.c_acumulado,4)))
 
 
 
