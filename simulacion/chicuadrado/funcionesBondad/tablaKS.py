@@ -61,6 +61,8 @@ class tablaks():
 
             diferencia= abs(prob_observada_acum - prob_esperada_acum)
 
+
+            #CALCULO DEL MAXIMO C
             if diferencia > self.max_c:
                self.max_c = diferencia
 

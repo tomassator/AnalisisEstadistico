@@ -44,6 +44,7 @@ class tablaChicuadrado():
         self.desviacion = math.sqrt(self.varianza)
 
 
+    #Funcion de densidad Distribucion Normal
     def calcularFuncionProbabilidad(self , li , ls, marcaClase):
         frecuencia_esperada = ((1/(self.desviacion * math.sqrt(2*math.pi))) * math.exp(-0.5*(((marcaClase - self.media)/self.desviacion)**2))) * (ls-li)
         return frecuencia_esperada
@@ -159,6 +160,7 @@ class tablaChicuadrado():
     def calcularGradosLibertad(self):
         self.grados_libertad = self.calcularCantidadIntervalos() - 1 - self.m
 
+    #CALCULO DE CHI
     def calcularC(self, fo, fe):
         return (((fo-fe)**2)/fe)
 
