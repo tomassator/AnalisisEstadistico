@@ -14,23 +14,24 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from chicuadrado.views import opcionesBondades, pruebaChicuadrado, pruebaKS
-from numerosaleatorios.views import numerosAleatorios, cargaparametros
-from menu.views import opciones, seleccionarMuestra
-from TP2.views import muestra1, muestra2,pruebaChiTP2, pruebaKSTP2
+from django.urls import path, include
+#from chicuadrado.views import opcionesBondades, pruebaChicuadrado, pruebaKS
+#from numerosaleatorios.views import numerosAleatorios, cargaparametros
+#from menu.views import opciones, seleccionarMuestra
+#from TP2.views import muestra1, muestra2,pruebaChiTP2, pruebaKSTP2
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', opciones),
-    path('numerosAleatorios/', numerosAleatorios),
-    path('cargaparametros/', cargaparametros),
-    path('pruebaBondades/', opcionesBondades),
-    path('pruebaChicuadrado/', pruebaChicuadrado),
-    path('pruebaKS/', pruebaKS),
-    path('seleccionarMuestra/', seleccionarMuestra),
-    path('muestra1/', muestra1),
-    path('muestra2/', muestra2),
-    path('pruebaChiTP2/', pruebaChiTP2),
-    path('pruebaKSTP2/', pruebaKSTP2),
+    path('', include('app.urls'))
+    #path('', opciones),
+    #path('numerosAleatorios/', numerosAleatorios),
+    #path('cargaparametros/', cargaparametros),
+    #path('pruebaBondades/', opcionesBondades),
+    #path('pruebaChicuadrado/', pruebaChicuadrado),
+    #path('pruebaKS/', pruebaKS),
+    #path('seleccionarMuestra/', seleccionarMuestra),
+    #path('muestra1/', muestra1),
+    #path('muestra2/', muestra2),
+    #path('pruebaChiTP2/', pruebaChiTP2),
+    #path('pruebaKSTP2/', pruebaKSTP2),
 ]
