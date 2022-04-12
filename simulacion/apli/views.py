@@ -49,7 +49,7 @@ def pruebaKS(request):
 
 #views del menu
 def opciones(request):
-    return render(request, 'opciones.html')
+    return render(request, 'apli/opciones.html')
 
 
 def seleccionarMuestra(request):

@@ -1,4 +1,5 @@
-import math
+import math, os
+from pathlib import Path
 from openpyxl import load_workbook
 
 def stats_bitcoin(): 
@@ -13,8 +14,9 @@ def stats_bitcoin():
 
     #formato: fecha, porcentaje de variacion
     #excel = load_workbook(filename= r"E:\matia\Documents\Facultad\SIM\TPs\TP2\simulacion\TP2\STATS_BIT.xlsx")
+    archivo = os.path.dirname(__file__) + r"\recursos\STATS_BIT.xlsx"
     excel = load_workbook(
-        filename=r"recursos\STATS_BIT.xlsx")  # Ruta del exel donde se extraen los datos
+        filename=archivo)  # Ruta del exel donde se extraen los datos
 
     #selecciona la unica hoja del excel
     hoja_seleccionada = excel['STATS_BIT']
