@@ -2,6 +2,7 @@ from django.http import HttpRequest
 from django.shortcuts import render
 from .utilidades import globales as g
 
+#carga la aplicacion
 def index(request):
     return render(request, 'index.html', { 
         "selecDist": g.SELEC_DISTRIBUCION,
@@ -14,6 +15,7 @@ def index(request):
         "url_pruebas": g.URL_NRO_RESULTADOS
         })
 
+#esta parte crear los html de las distintas opciones segun el tipo de distribucion
 def formDUniforme(request):
     return render(request, 'form-DUniforme.html', {
         "inputA": g.INPUT_A,
@@ -39,9 +41,6 @@ def formDPoisson(request):
 
 #manejo del los parametros para calcular los valores
 def nro_resultados(request: HttpRequest):
-    print(request.method)
-    print(request.content_type)
-    print(request.POST.dict)
     return render(request, 'nros-resultados.html', {})
 
 
