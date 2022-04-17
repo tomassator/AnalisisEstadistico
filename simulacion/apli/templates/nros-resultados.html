@@ -1,4 +1,11 @@
 <!-- TODO: Completar y agregar el histograma tambien -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
 <div class="row">
     <div class="col">
         <div class="table-wrapper-scroll-y scrollbar mb-5">
@@ -6,27 +13,16 @@
               <thead class="table-primary text-white text-center" id="headResultado">
                 <tr>
                   <th scope="col">Nro Iteracion</th>
-                  <th scope="col">Xi</th>
-                  <th scope="col">Numero Pseudo-Random</th>
-
+                  <th scope="col">Numero Aleatorio Generado</th>
                 </tr>
               </thead>
               <tbody>
+                {% for fila in resultados %}
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
+                  <th scope="row">{{fila.0}}</th>
+                  <td>{{fila.1}}</td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td >Larry the Bird</td>
-                  <td>Thornton</td>
-                </tr>
+                {% endfor %}
             </table>
         </div>
         <style>
@@ -35,3 +31,111 @@
             }
         </style>
 </div>
+
+<div class="container-fluid">
+  <div class="row">
+      <div class="col">
+          <div id="container">
+          </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Intervalo</th>
+                <th scope="col">Marca de Clase</th>
+                <th scope="col">Frecuencia</th>
+                <th scope="col">Frecuencia Relativa</th>
+                <th scope="col">Frecuencia Acumulada</th>
+                <th scope="col">Frecuencia Relativa Acumulada</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for fila in histograma.intervalos %}
+              <tr>
+                <th scope="row">{{fila.0}} - {{fila.1}}</th>
+                <td>{{fila.2}}</td>
+                <td>{{fila.3}}</td>
+                <td>{{fila.4}}</td>
+                <td>{{fila.5}}</td>
+                <td>{{fila.6}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col">
+              <form action="/pruebaBondades/" method="GET">
+                  <input class="btn btn-outline-primary btn-lg" type="submit" value="Prueba de Bondad">
+              </form>
+          </div>
+      </div>
+  </div>
+
+
+<script type="application/javascript">
+
+Highcharts.chart('container', {
+chart: {
+  type: 'column'
+},
+title: {
+  text: 'Histograma'
+},
+
+accessibility: {
+  announceNewData: {
+      enabled: true
+  }
+},
+xAxis: {
+  type: 'category'
+},
+yAxis: {
+  title: {
+      text: 'frecuencias'
+  }
+
+},
+legend: {
+  enabled: false
+},
+plotOptions: {
+  series: {
+      borderWidth: 0,
+      dataLabels: {
+          enabled: true,
+          format: '{point.y:.1f}'
+      }
+  }
+},
+
+tooltip: {
+  headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+  pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b> of total<br/>'
+},
+
+series: [
+  {
+      name: "intervalos",
+      colorByPoint: true,
+      data: [
+          {% for int in histograma.intervalos%}
+          {
+              name: "{{int.0}} - {{int.1}}",
+              y: {{int.3}},
+
+          },
+          {% endfor %}
+      ]
+  }
+],
+});
+</script>
