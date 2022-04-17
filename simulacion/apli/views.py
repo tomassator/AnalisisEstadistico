@@ -57,9 +57,6 @@ def nro_resultados(request: HttpRequest):
     #calculo de los intervalos y sus frecuencias
     cant_intervalos = int(g.INTERVALOS[request.POST[g.SELEC_INTERVALOS]])
     intervalos = dh.Histograma().determinarIntervalo(cant_intervalos, dist_elegida.get_valores(), cant_nros)
-    
-    print(resultados)
-    print(intervalos)
     return render(request, 'nros-resultados.html', {
         "resultados": resultados,
         "histograma": intervalos
