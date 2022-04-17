@@ -46,7 +46,6 @@ class DistribucionExponencial(DistribucionProbabilidad):
         return self._valores
 
 class DistribucionNormal(DistribucionProbabilidad):
-    #TODO: implementar DistNormal
     def __init__(self, params: dict) -> None:
         super().__init__(params)
         self._media = params[g.INPUT_MEDIA]
@@ -93,7 +92,6 @@ class DistribucionNormal(DistribucionProbabilidad):
         return self._valores
 
 class DistribucionPoisson(DistribucionProbabilidad):
-    #TODO: implementar DistPoisson
     def __init__(self, params: dict) -> None:
         super().__init__(params)
         self._media = params[g.INPUT_MEDIA]
