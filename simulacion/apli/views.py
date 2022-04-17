@@ -1,10 +1,12 @@
+from ast import Dict
 from django.http import HttpRequest
 from django.shortcuts import render
-from .utilidades import globales as g
+from .utilidades import globales as g, datos_histograma as dh
 
 #carga la aplicacion
 def index(request):
     return render(request, 'index.html', { 
+        "inputCantNros": g.INPUT_CANT_NROS,
         "selecDist": g.SELEC_DISTRIBUCION,
         "selecInter": g.SELEC_INTERVALOS,
         "selecPrueba": g.SELEC_PRUEBA,
@@ -44,11 +46,23 @@ def formDPoisson(request):
 #manejo del los parametros para calcular los valores
 def nro_resultados(request: HttpRequest):
     #TODO: terminar
-    from .utilidades.vars_aleatorias import DISTs
-    dist_elegida = DISTs[request.POST[g.SELEC_DISTRIBUCION]]
-    resultados = dist_elegida.calc_valores(int(g.INTERVALOS[request.POST[g.SELEC_INTERVALOS]]))
+    from .utilidades.vars_aleatorias import DISTs, DistribucionProbabilidad
+
+    #calculo de los numeros aleatorios
+    cant_nros = int(request.POST[g.INPUT_CANT_NROS])
+    dist_elegida : DistribucionProbabilidad = DISTs[request.POST[g.SELEC_DISTRIBUCION]](request.POST)
+    dist_elegida.calc_valores(cant_nros)
+    resultados = dist_elegida.get_valores_con_indice()
+
+    #calculo de los intervalos y sus frecuencias
+    cant_intervalos = int(g.INTERVALOS[request.POST[g.SELEC_INTERVALOS]])
+    intervalos = dh.Histograma().determinarIntervalo(cant_intervalos, dist_elegida.get_valores(), cant_nros)
+    
+    print(resultados)
+    print(intervalos)
     return render(request, 'nros-resultados.html', {
-        "resultados": resultados
+        "resultados": resultados,
+        "histograma": intervalos
     })
 
 

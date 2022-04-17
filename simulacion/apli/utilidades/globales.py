@@ -1,4 +1,6 @@
-'''Estos son constantes que configuran todo el programa, no deben ser alterados fuera de este archivo'''
+'''Estos son constantes que configuran todo el programa, no deben ser alterados fuera de este archivo.
+
+Funcionan como claves para distintos diccionario para reusarse.'''
 
 #nombre de las URLs usadas para dar servicio api
 URL_NRO_RESULTADOS = 'nro_resultados'
@@ -10,9 +12,8 @@ SELEC_DISTRIBUCION = 'selectDistribucion'
 SELEC_INTERVALOS = 'selectIntervalos'
 SELEC_METODO_NORMAL = 'selectMetodo'
 INPUT_MEDIA = 'inputMedia'
-#INPUT_VARIANZA = 'inputVarianza'
 INPUT_DESVIACION = 'inputDesviacion'
-#INPUT_MET_NORMAL = 'inputMetodoNormal'
+INPUT_CANT_NROS = 'inputCantNros'
 INPUT_A = 'inputA'
 INPUT_B = 'inputB'
 

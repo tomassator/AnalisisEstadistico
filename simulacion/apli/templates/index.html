@@ -28,8 +28,14 @@
                         <div class="card-body">
                             <div class="flex-column">
                                 <div class="input-group mb-3">
+                                    <span class="input-group-text">Cantidad de Numeros</span>
+                                    <input type="number" class="form-control" name="{{inputCantNros}}" id="{{inputCantNros}}" placeholder="">
+                                </div>
+
+                                <div class="input-group mb-3">
                                     <span class="input-group-text">Tipo de Distribucion</span>
                                     <select name="{{selecDist}}" id="{{selecDist}}" class="form-select" onChange="actualizarDistElegida();">
+                                        <option value="" selected disabled hidden>Seleccionar</option>
                                         {% for key, value in distribuciones %}
                                         <option value="{{key}}">{{value}}</option>
                                         {% endfor %}
@@ -39,6 +45,7 @@
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">Cantidad Intervalos</span>
                                     <select name="{{selecInter}}" id="{{selecInter}}" class="form-select">
+                                        <option value="" selected disabled hidden>Seleccionar</option>
                                         {% for key, value in intervalos %}
                                         <option value="{{key}}">{{value}}</option>
                                         {% endfor %}
@@ -67,9 +74,7 @@
             <!-- Aca se cargan los resultados del calculo de los numeros de la variable aleatoria -->
         </div>
 
-        <div id="content-histograma">
-            <!-- TODO: Debe cargar el histograma de los resultados -->
-        </div>
+
 
         <div id="content-prueba-selec" class="mb-3">
             <!-- TODO: Debe haber un HTML que nos permita elegir el tipo de Prueba para realizar -->
@@ -82,6 +87,7 @@
                                 <div class="input-group">
                                     <span class="input-group-text">Prueba</span>
                                     <select name="{{ selecPrueba }}" class="form-select">
+                                        <option value="" selected disabled hidden>Seleccionar</option>
                                         {% for key, value in pruebas %}
                                         <option value="{{key}}">{{value}}</option>
                                         {% endfor %}

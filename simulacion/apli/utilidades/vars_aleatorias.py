@@ -17,11 +17,18 @@ class DistribucionProbabilidad:
         '''solo devuelve los valores calculados'''
         return self._valores
     
+    def get_valores_con_indice(self):
+        '''devuelve una lista de tuplas (indice, nro aleatorio)'''
+        tuplas = []
+        for i in range(len(self._valores)):
+            tuplas.append((i, self._valores[i]))
+        return tuplas
+
 class DistribucionUniforme(DistribucionProbabilidad):
     def __init__(self, params: dict) -> None:
         super().__init__(params)
-        self._a = params[g.INPUT_A]
-        self._b = params[g.INPUT_B]
+        self._a = float(params[g.INPUT_A])
+        self._b = float(params[g.INPUT_B])
     
     def calc_valores(self, cant: int):
         for it in range(cant):
@@ -34,7 +41,7 @@ class DistribucionUniforme(DistribucionProbabilidad):
 class DistribucionExponencial(DistribucionProbabilidad):
     def __init__(self, params: dict) -> None:
         super().__init__(params)
-        self._media = params[g.INPUT_MEDIA]
+        self._media = float(params[g.INPUT_MEDIA])
         self._lambda = 1 / self._media
 
     def calc_valores(self, cant: int):
@@ -48,8 +55,8 @@ class DistribucionExponencial(DistribucionProbabilidad):
 class DistribucionNormal(DistribucionProbabilidad):
     def __init__(self, params: dict) -> None:
         super().__init__(params)
-        self._media = params[g.INPUT_MEDIA]
-        self._desviacion = params[g.INPUT_DESVIACION]
+        self._media = float(params[g.INPUT_MEDIA])
+        self._desviacion = float(params[g.INPUT_DESVIACION])
         self._metodo_elegido = {
             g.MET_BOX_MULLER: self._iteracion_box_muller,
             g.MET_CONV: self._iteracion_convolucion}.get(params[g.SELEC_METODO_NORMAL])
@@ -79,7 +86,7 @@ class DistribucionNormal(DistribucionProbabilidad):
         '''hace el calculo por metodo convolucion'''
         suma_rnds = 0
         for i in range(12):
-            rnds += r.random()
+            suma_rnds += r.random()
         calc = (suma_rnds - 6) * self._desviacion +self._media
         return calc
         
@@ -94,7 +101,7 @@ class DistribucionNormal(DistribucionProbabilidad):
 class DistribucionPoisson(DistribucionProbabilidad):
     def __init__(self, params: dict) -> None:
         super().__init__(params)
-        self._media = params[g.INPUT_MEDIA]
+        self._media = float(params[g.INPUT_MEDIA])
         self._lambda = self._media
     
     def _iteracion_poisson(self):

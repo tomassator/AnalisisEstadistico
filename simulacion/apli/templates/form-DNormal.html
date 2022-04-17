@@ -12,6 +12,7 @@
     <div class="input-group mb-3">
         <span class="input-group-text">Método de Calculo</span>
         <select name="{{selecMetodo}}" id="{{selecMetodo}}" class="form-select">
+            <option value="" selected disabled hidden>Seleccionar</option>
             {% for key, value in metodos %}
             <option value="{{ key }}">{{ value }}</option>
             {% endfor %}
