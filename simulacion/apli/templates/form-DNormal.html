@@ -1,11 +1,21 @@
 <div class="flex-column">
     <div class="input-group mb-3">
-        <span class="input-group-text">Varianza</span>
-        <input type="number" class="form-control" name="{{inputVarianza}}" id="{{inputVarianza}}" placeholder="">
+        <span class="input-group-text">Media</span>
+        <input type="number" class="form-control" name="{{inputMedia}}" id="{{inputMedia}}" placeholder="">
     </div>
     
     <div class="input-group mb-3">
         <span class="input-group-text">Desviacion</span>
         <input type="number" class="form-control" name="{{inputDesviacion}}" id="{{inputDesviacion}}" placeholder="">
     </div>
+    
+    <div class="input-group mb-3">
+        <span class="input-group-text">Método de Calculo</span>
+        <select name="{{selecMetodo}}" id="{{selecMetodo}}" class="form-select">
+            {% for key, value in metodos %}
+            <option value="{{ key }}">{{ value }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
 </div>

@@ -8,9 +8,11 @@ URL_PRUEBA_RESULTADOS_KS = 'prueba_resultados_ks'
 #claves para formularios de seleccion de distribucion
 SELEC_DISTRIBUCION = 'selectDistribucion'
 SELEC_INTERVALOS = 'selectIntervalos'
+SELEC_METODO_NORMAL = 'selectMetodo'
 INPUT_MEDIA = 'inputMedia'
-INPUT_VARIANZA = 'inputVarianza'
+#INPUT_VARIANZA = 'inputVarianza'
 INPUT_DESVIACION = 'inputDesviacion'
+#INPUT_MET_NORMAL = 'inputMetodoNormal'
 INPUT_A = 'inputA'
 INPUT_B = 'inputB'
 
@@ -19,6 +21,15 @@ UNIFORME = 'uniforme'
 EXPONENCIAL = 'exponencial'
 NORMAL = 'normal'
 POISSON = 'poisson'
+
+#metodos seleccionables para la normal
+MET_BOX_MULLER = "box_muller"
+MET_CONV = "convolucion"
+
+METODOS_NORMAL = {
+    MET_BOX_MULLER: "Metodo Box Muller",
+    MET_CONV: "Metodo Convolucion"
+}
 
 #diccionario de distribuciones
 DISTRIBUCIONES = {
