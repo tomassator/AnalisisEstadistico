@@ -11,7 +11,7 @@ def stats_ginobili():
     #    filename=r"A:\TP SIMULACION\simulacion\TP2\STATS_MANU.xlsx")  # Ruta del exel donde se extraen los datos
 
     excel = load_workbook(
-        filename=r"C:\Users\User\Desktop\Facultad\5to año\SIM\TP1\simulacion\TP2\STATS_MANU.xlsx")  # Ruta del exel donde se extraen los datos
+        filename=r"TP2\STATS_MANU.xlsx")  # Ruta del exel donde se extraen los datos
 
     partido=0
 

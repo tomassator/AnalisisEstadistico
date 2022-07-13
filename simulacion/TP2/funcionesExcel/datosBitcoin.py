@@ -14,7 +14,7 @@ def stats_bitcoin():
     #formato: fecha, porcentaje de variacion
     #excel = load_workbook(filename= r"E:\matia\Documents\Facultad\SIM\TPs\TP2\simulacion\TP2\STATS_BIT.xlsx")
     excel = load_workbook(
-        filename=r"C:\Users\User\Desktop\Facultad\5to año\SIM\TP1\simulacion\TP2\STATS_BIT.xlsx")  # Ruta del exel donde se extraen los datos
+        filename=r"TP2\STATS_BIT.xlsx")  # Ruta del exel donde se extraen los datos
 
     #selecciona la unica hoja del excel
     hoja_seleccionada = excel['STATS_BIT']
